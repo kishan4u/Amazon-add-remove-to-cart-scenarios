@@ -42,6 +42,8 @@ public class AddToCart extends BaseClass {
        // Called method from utilities class for mouse hover the search result and then click on first option
         u._mouseOverAndClick(option1);
 
+
+
     }
 
     // Method to click on Add to Cart button
@@ -50,13 +52,30 @@ public class AddToCart extends BaseClass {
 
         //Calling the counter method to get the initial value before adding the product
         valueofcounter();
-        BaseClass.driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 
+
+
+        //Selecting the first product
+
+        WebElement firstproduct = BaseClass.driver.findElement(By.xpath("(//*[@class='a-size-mini a-spacing-none a-color-base s-line-clamp-2']/a)[1]"));
+        WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.elementToBeClickable(firstproduct));
+        firstproduct.click();
+
+        //Switching to next window
+        u.SwitchToWindow(BaseClass.driver);
+
+        BaseClass.driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         //Called from utilities class. Scrolling screen method to view the add to cart button on screen
-        WebElement cart = BaseClass.driver.findElement(By.xpath("(//span[contains(@id,'a-autoid-1')]//span)[1]"));
+
+        WebElement cart = BaseClass.driver.findElement(By.xpath("//input[@id=\"add-to-cart-button\"]"));
         u._scrollToElement(cart);
 
         cart.click();
+        /*WebElement cart = BaseClass.driver.findElement(By.xpath("(//span[contains(@id,'a-autoid-1')]//span)[1]"));
+        u._scrollToElement(cart);
+
+        cart.click();*/
 
     }
 
@@ -71,8 +90,8 @@ public class AddToCart extends BaseClass {
  // Method to count the Cart increment/decrement after add/ remove product from cart
     public void verifyCount(){
 
-
-        String afterCounter = driver.findElement(By.xpath("//span[@id=\"nav-cart-count\"]")).getText();
+        BaseClass.driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        String afterCounter = driver.findElement(By.xpath("//*[@id=\"nav-cart-count\"]")).getText();
         int countervalAfter = Integer.parseInt(afterCounter);
         System.out.println("value of the counter after is : " + countervalAfter);
 

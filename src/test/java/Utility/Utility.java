@@ -10,6 +10,8 @@ import org.openqa.selenium.interactions.Coordinates;
 import org.openqa.selenium.interactions.Locatable;
 import org.openqa.selenium.support.PageFactory;
 
+import java.util.Set;
+
 public class Utility extends BaseClass {
 
 
@@ -47,4 +49,22 @@ public class Utility extends BaseClass {
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("arguments[0].click()", element);
     }
+
+    public void SwitchToWindow(WebDriver driver)  {
+        try {
+            String parent_wh1 = driver.getWindowHandle();
+            Set<String> all_wh1 = driver.getWindowHandles();
+            for (String wh1 : all_wh1) {
+                driver.switchTo().window(wh1);
+                if (wh1.equals(parent_wh1)) {
+                } else {
+                    driver.switchTo().window(wh1);
+                }
+            }
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
 }

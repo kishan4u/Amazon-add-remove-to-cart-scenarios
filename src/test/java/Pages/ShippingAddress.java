@@ -33,7 +33,7 @@ public class ShippingAddress extends BaseClass {
        buy.click();
 
        //Sign In required inorder to proceed for check out so hardcoding the data for now
-       signIn("xxxxxxxx");                                    // Enter password here
+       signIn("Sigma@2796");                                    // Enter password here
     }
 
       // method to enter email id and password in order to check out
@@ -42,7 +42,7 @@ public class ShippingAddress extends BaseClass {
 
         //Entering phone number
         WebElement phone =  BaseClass.driver.findElement(By.xpath("//input[@id=\"ap_email\"]"));
-        phone.sendKeys("xxxxxxx");                      //Enter Email.id or mobile number
+        phone.sendKeys("7022165264");                      //Enter Email.id or mobile number
 
         //Click on continue after entering email or mobile number
         WebElement contin =  BaseClass.driver.findElement(By.xpath("//*[@id=\"continue\"]"));

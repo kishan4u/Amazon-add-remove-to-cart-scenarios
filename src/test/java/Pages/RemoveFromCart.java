@@ -4,6 +4,8 @@ import StepDefinations.BaseClass;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
@@ -30,6 +32,8 @@ public class RemoveFromCart extends BaseClass {
 
         //Clicking on Return to cart button
         WebElement ReturntoCart =  BaseClass.driver.findElement(By.xpath("//*[@id=\"a-popover-content-3\"]/div[2]/div[2]/span/span/a"));
+        WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.elementToBeClickable(ReturntoCart));
         ReturntoCart.click();
     }
 
